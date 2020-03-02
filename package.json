@@ -6,6 +6,7 @@
   "scripts": {
     "build-client": "webpack",
     "build-client-watch": "webpack -w",
+    "seed": "node scripts/seed.js",
     "start-dev": "npm run build-client-watch & npm run start-server",
     "start-server": "nodemon server -e html,js,scss --ignore public --ignore client",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -43,6 +44,7 @@
     "@babel/preset-react": "^7.8.3",
     "@babel/register": "^7.8.3",
     "babel-loader": "^8.0.6",
+    "nodemon": "^2.0.2",
     "webpack": "^4.41.6",
     "webpack-cli": "^3.3.11"
   }
