@@ -11,7 +11,6 @@ const db = new Sequelize(
   }
 );
 
-console.log(db);
 module.exports = db;
 
 if (process.env.NODE_ENV === "test") {
