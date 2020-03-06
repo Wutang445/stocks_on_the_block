@@ -1,13 +1,13 @@
 import React from "react";
 import { withRouter, Route, Switch } from "react-router-dom";
 
-import LoginSignUp from "./components/LoginSignUp";
+import { Login, Signup } from "./components";
 
 const Routes = () => {
   return (
     <Switch>
-      <Route path="/login" component={LoginSignUp} />
-      <Route path="/signup" component={""} />
+      <Route path="/login" component={Login} />
+      <Route path="/signup" component={Signup} />
       <Route path="/portfolio" component={""} />
       <Route path="/home" component={""} />
     </Switch>

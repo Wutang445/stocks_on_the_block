@@ -115,13 +115,19 @@ var App = function App() {
 /*!******************************************!*\
   !*** ./client/components/LoginSignUp.js ***!
   \******************************************/
-/*! exports provided: default */
+/*! exports provided: Login, Signup */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Login", function() { return Login; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Signup", function() { return Signup; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../store */ "./client/store/index.js");
+
+
 
 
 var LoginSignUp = function LoginSignUp() {
@@ -137,7 +143,36 @@ var LoginSignUp = function LoginSignUp() {
   })));
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (LoginSignUp);
+var mapLogin = function mapLogin(state) {
+  return {
+    name: "login",
+    displayName: "Login",
+    error: state.user.error
+  };
+};
+
+var mapSignup = function mapSignup(state) {
+  return {
+    name: "signup",
+    displayName: "Sign Up",
+    error: state.user.error
+  };
+};
+
+var mapDispatch = function mapDispatch(dispatch) {
+  return {
+    handleSubmit: function handleSubmit(evt) {
+      evt.preventDefault();
+      var formName = evt.target.name;
+      var email = evt.target.email.value;
+      var password = evt.target.password.value;
+      dispatch(Object(_store__WEBPACK_IMPORTED_MODULE_2__["auth"])(email, password, formName));
+    }
+  };
+};
+
+var Login = Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapLogin, mapDispatch)(LoginSignUp);
+var Signup = Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapSignup, mapDispatch)(LoginSignUp);
 
 /***/ }),
 
@@ -173,6 +208,25 @@ var Navbar = function Navbar() {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Navbar);
+
+/***/ }),
+
+/***/ "./client/components/index.js":
+/*!************************************!*\
+  !*** ./client/components/index.js ***!
+  \************************************/
+/*! exports provided: Login, Signup */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _LoginSignUp__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./LoginSignUp */ "./client/components/LoginSignUp.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Login", function() { return _LoginSignUp__WEBPACK_IMPORTED_MODULE_0__["Login"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Signup", function() { return _LoginSignUp__WEBPACK_IMPORTED_MODULE_0__["Signup"]; });
+
+// Centralized exports for components
+
 
 /***/ }),
 
@@ -237,7 +291,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var _components_LoginSignUp__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/LoginSignUp */ "./client/components/LoginSignUp.js");
+/* harmony import */ var _components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components */ "./client/components/index.js");
 
 
 
@@ -245,10 +299,10 @@ __webpack_require__.r(__webpack_exports__);
 var Routes = function Routes() {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     path: "/login",
-    component: _components_LoginSignUp__WEBPACK_IMPORTED_MODULE_2__["default"]
+    component: _components__WEBPACK_IMPORTED_MODULE_3__["Login"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     path: "/signup",
-    component: ""
+    component: _components__WEBPACK_IMPORTED_MODULE_3__["Signup"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     path: "/portfolio",
     component: ""
