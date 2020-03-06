@@ -149,7 +149,7 @@ var LoginSignUp = function LoginSignUp(props) {
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     type: "submit",
     value: "Submit"
-  })));
+  }, displayName)));
 };
 
 var mapLogin = function mapLogin(state) {

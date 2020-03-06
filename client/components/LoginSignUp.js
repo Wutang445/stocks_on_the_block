@@ -11,7 +11,9 @@ const LoginSignUp = props => {
         <input type="text" name="email" />
         <label htmlFor="password">Password</label>
         <input type="password" name="password" />
-        <button type="submit" value="Submit" />
+        <button type="submit" value="Submit">
+          {displayName}
+        </button>
       </form>
     </div>
   );
