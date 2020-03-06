@@ -130,14 +130,23 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var LoginSignUp = function LoginSignUp() {
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Username/Email"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+var LoginSignUp = function LoginSignUp(props) {
+  var handleSubmit = props.handleSubmit,
+      displayName = props.displayName;
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+    onSubmit: handleSubmit,
+    name: displayName
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    htmlFor: "username"
+  }, "Username/Email"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     type: "text",
-    name: "username"
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Password"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-    type: "text",
+    name: "email"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    htmlFor: "password"
+  }, "Password"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "password",
     name: "password"
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     type: "submit",
     value: "Submit"
   })));
@@ -291,7 +300,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var _components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components */ "./client/components/index.js");
+/* harmony import */ var _components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components */ "./client/components/index.js");
 
 
 
@@ -299,10 +308,10 @@ __webpack_require__.r(__webpack_exports__);
 var Routes = function Routes() {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     path: "/login",
-    component: _components__WEBPACK_IMPORTED_MODULE_3__["Login"]
+    component: _components__WEBPACK_IMPORTED_MODULE_2__["Login"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     path: "/signup",
-    component: _components__WEBPACK_IMPORTED_MODULE_3__["Signup"]
+    component: _components__WEBPACK_IMPORTED_MODULE_2__["Signup"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     path: "/portfolio",
     component: ""
@@ -470,17 +479,18 @@ var auth = function auth(email, password, method) {
 
               case 3:
                 res = _context2.sent;
-                _context2.next = 9;
+                console.log(res);
+                _context2.next = 10;
                 break;
 
-              case 6:
-                _context2.prev = 6;
+              case 7:
+                _context2.prev = 7;
                 _context2.t0 = _context2["catch"](0);
                 return _context2.abrupt("return", dispatch(getUser({
                   error: _context2.t0
                 })));
 
-              case 9:
+              case 10:
                 try {
                   dispatch(getUser(res.data));
                   _history__WEBPACK_IMPORTED_MODULE_1__["default"].push("/home");
@@ -488,12 +498,12 @@ var auth = function auth(email, password, method) {
                   console.error(dispatchOrHistoryErr);
                 }
 
-              case 10:
+              case 11:
               case "end":
                 return _context2.stop();
             }
           }
-        }, _callee2, null, [[0, 6]]);
+        }, _callee2, null, [[0, 7]]);
       }));
 
       return function (_x2) {

@@ -2,15 +2,16 @@ import React from "react";
 import { connect } from "react-redux";
 import { auth } from "../store";
 
-const LoginSignUp = () => {
+const LoginSignUp = props => {
+  const { handleSubmit, displayName } = props;
   return (
     <div>
-      <form>
-        <label>Username/Email</label>
-        <input type="text" name="username" />
-        <label>Password</label>
-        <input type="text" name="password" />
-        <input type="submit" value="Submit" />
+      <form onSubmit={handleSubmit} name={displayName}>
+        <label htmlFor="username">Username/Email</label>
+        <input type="text" name="email" />
+        <label htmlFor="password">Password</label>
+        <input type="password" name="password" />
+        <button type="submit" value="Submit" />
       </form>
     </div>
   );
