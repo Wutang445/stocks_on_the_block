@@ -111,6 +111,27 @@ var App = function App() {
 
 /***/ }),
 
+/***/ "./client/components/Home.js":
+/*!***********************************!*\
+  !*** ./client/components/Home.js ***!
+  \***********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var Home = function Home() {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Welcome back"));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Home);
+
+/***/ }),
+
 /***/ "./client/components/LoginSignUp.js":
 /*!******************************************!*\
   !*** ./client/components/LoginSignUp.js ***!
@@ -220,11 +241,32 @@ var Navbar = function Navbar() {
 
 /***/ }),
 
+/***/ "./client/components/Portfolio.js":
+/*!****************************************!*\
+  !*** ./client/components/Portfolio.js ***!
+  \****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var Portfolio = function Portfolio() {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Welcome, User. Here are your listed stocks for today"));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Portfolio);
+
+/***/ }),
+
 /***/ "./client/components/index.js":
 /*!************************************!*\
   !*** ./client/components/index.js ***!
   \************************************/
-/*! exports provided: Login, Signup */
+/*! exports provided: Login, Signup, Home, Portfolio */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -234,7 +276,15 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Signup", function() { return _LoginSignUp__WEBPACK_IMPORTED_MODULE_0__["Signup"]; });
 
+/* harmony import */ var _Home__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Home */ "./client/components/Home.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Home", function() { return _Home__WEBPACK_IMPORTED_MODULE_1__["default"]; });
+
+/* harmony import */ var _Portfolio__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Portfolio */ "./client/components/Portfolio.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Portfolio", function() { return _Portfolio__WEBPACK_IMPORTED_MODULE_2__["default"]; });
+
 // Centralized exports for components
+
+
 
 
 /***/ }),
@@ -314,10 +364,10 @@ var Routes = function Routes() {
     component: _components__WEBPACK_IMPORTED_MODULE_2__["Signup"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     path: "/portfolio",
-    component: ""
+    component: _components__WEBPACK_IMPORTED_MODULE_2__["Portfolio"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     path: "/home",
-    component: ""
+    component: _components__WEBPACK_IMPORTED_MODULE_2__["Home"]
   }));
 };
 
