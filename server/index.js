@@ -10,6 +10,8 @@ const db = require("./db");
 const sessionStore = new SequelizeStore({ db });
 const PORT = process.env.PORT || 3000;
 
+require("dotenv").config();
+
 passport.serializeUser((user, done) => done(null, user.id));
 
 passport.deserializeUser(async (id, done) => {
