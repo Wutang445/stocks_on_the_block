@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { logout } from "../store";
 
-const Navbar = props => {
+const Navbar = (props) => {
   const { isLoggedIn } = props;
 
   return (
@@ -21,11 +21,21 @@ const Navbar = props => {
         </nav>
       ) : (
         <nav>
-          <Link to="/home">Home</Link>
-          <Link to="/login">Login</Link>
-          <Link to="/signup">SignUp</Link>
-          <Link to="/portfolio">Portfolio</Link>
-          <Link to="/transactions">Transactions</Link>
+          <Link to="/home">
+            <button>Home</button>
+          </Link>
+          <Link to="/login">
+            <button>Login</button>
+          </Link>
+          <Link to="/signup">
+            <button>SignUp</button>
+          </Link>
+          <Link to="/portfolio">
+            <button>Portfolio</button>
+          </Link>
+          <Link to="/transactions">
+            <button>Transactions</button>
+          </Link>
         </nav>
       )}
 
@@ -34,17 +44,17 @@ const Navbar = props => {
   );
 };
 
-const mapState = state => {
+const mapState = (state) => {
   return {
-    isLoggedIn: !!state.user.id
+    isLoggedIn: !!state.user.id,
   };
 };
 
-const mapDispatch = dispatch => {
+const mapDispatch = (dispatch) => {
   return {
     handleClick() {
       dispatch(logout());
-    }
+    },
   };
 };
 
