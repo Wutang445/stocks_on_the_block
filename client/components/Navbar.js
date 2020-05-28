@@ -12,12 +12,20 @@ const Navbar = (props) => {
 
       {isLoggedIn ? (
         <nav>
-          <Link to="/home">Home</Link>
-          <a href="#" onClick={props.handleClick}>
-            Logout
-          </a>
-          <Link to="/portfolio">Portfolio</Link>
-          <Link to="/transactions">Transactions</Link>
+          <Link to="/home">
+            <button>Home</button>
+          </Link>
+          <button>
+            <a href="#" onClick={props.handleClick}>
+              Logout
+            </a>
+          </button>
+          <Link to="/portfolio">
+            <button>Portfolio</button>
+          </Link>
+          <Link to="/transactions">
+            <button>Transactions</button>
+          </Link>
         </nav>
       ) : (
         <nav>
