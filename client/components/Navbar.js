@@ -7,47 +7,29 @@ const Navbar = (props) => {
   const { isLoggedIn } = props;
 
   return (
-    <div className="Navbar">
+    <div className="navbar-container">
       <h1>Stocks on the Block</h1>
 
       {isLoggedIn ? (
-        <nav>
-          <Link to="/home">
-            <button>Home</button>
-          </Link>
-          <button>
-            <a href="#" onClick={props.handleClick}>
-              Logout
-            </a>
-          </button>
-          <Link to="/portfolio">
-            <button>Portfolio</button>
-          </Link>
-          <Link to="/transactions">
-            <button>Transactions</button>
-          </Link>
+        <nav className="navbar-links">
+          <Link to="/home">Home</Link>
+
+          <a href="#" onClick={props.handleClick}>
+            Logout
+          </a>
+
+          <Link to="/portfolio">Portfolio</Link>
+          <Link to="/transactions">Transactions</Link>
         </nav>
       ) : (
-        <nav>
-          <Link to="/home">
-            <button>Home</button>
-          </Link>
-          <Link to="/login">
-            <button>Login</button>
-          </Link>
-          <Link to="/signup">
-            <button>SignUp</button>
-          </Link>
-          <Link to="/portfolio">
-            <button>Portfolio</button>
-          </Link>
-          <Link to="/transactions">
-            <button>Transactions</button>
-          </Link>
+        <nav className="navbar-links">
+          <Link to="/home">Home</Link>
+          <Link to="/login">Login</Link>
+          <Link to="/signup">SignUp</Link>
+          <Link to="/portfolio">Portfolio</Link>
+          <Link to="/transactions">Transactions</Link>
         </nav>
       )}
-
-      <hr />
     </div>
   );
 };

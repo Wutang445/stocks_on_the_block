@@ -1,3 +1,30 @@
+html {
+  margin: 0px;
+  padding: 0px;
+}
+
 body {
   font-family: sans-serif;
+  padding: 0px;
+  margin: 0px;
+}
+
+.navbar-container {
+  text-align: center;
+  background: blue;
+  color: white;
+  width: 100%;
+  height: 100%;
+  padding: 50px;
+}
+
+.navbar-links a {
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.navbar-links a:hover {
+  background-color: red;
 }

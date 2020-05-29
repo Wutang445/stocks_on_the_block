@@ -2,7 +2,7 @@ import React from "react";
 import { getStockData } from "../store/stockData";
 import { connect } from "react-redux";
 
-const Portfolio = props => {
+const Portfolio = (props) => {
   const [stockData, setStockData] = React.useState("");
   console.log(props.stockData["Time Series (1min)"]);
   // const handleClick = () => {
@@ -15,22 +15,22 @@ const Portfolio = props => {
 
   return (
     <div>
-      <h1>Welcome, User. Here are your listed stocks for today</h1>
+      <h1>Welcome. Here are the stocks listed for today.</h1>
 
       {/* <button onClick={handleClick}>Test</button> */}
     </div>
   );
 };
 
-const mapState = state => {
+const mapState = (state) => {
   return {
-    stockData: state.stockData
+    stockData: state.stockData,
   };
 };
 
-const mapDispatch = dispatch => {
+const mapDispatch = (dispatch) => {
   return {
-    getStockData: () => dispatch(getStockData())
+    getStockData: () => dispatch(getStockData()),
   };
 };
 export default connect(mapState, mapDispatch)(Portfolio);
