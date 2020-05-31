@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const alphavantage = require("alphavantage");
-const apiKey = "543HLB2FD4HXI9IR";
+const apiKey;
 const alpha = alphavantage({ key: apiKey });
 
 router.get("/", async (req, res, next) => {

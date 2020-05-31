@@ -2,11 +2,11 @@ import React from "react";
 import { connect } from "react-redux";
 import { auth } from "../store";
 
-const LoginSignUp = props => {
+const LoginSignUp = (props) => {
   const { handleSubmit, displayName } = props;
   return (
     <div>
-      <form onSubmit={handleSubmit} name={displayName}>
+      <form onSubmit={handleSubmit} name={displayName} className="form-div">
         <label htmlFor="username">Username/Email</label>
         <input type="text" name="email" />
         <label htmlFor="password">Password</label>
@@ -19,23 +19,23 @@ const LoginSignUp = props => {
   );
 };
 
-const mapLogin = state => {
+const mapLogin = (state) => {
   return {
     name: "login",
     displayName: "Login",
-    error: state.user.error
+    error: state.user.error,
   };
 };
 
-const mapSignup = state => {
+const mapSignup = (state) => {
   return {
     name: "signup",
     displayName: "Sign Up",
-    error: state.user.error
+    error: state.user.error,
   };
 };
 
-const mapDispatch = dispatch => {
+const mapDispatch = (dispatch) => {
   return {
     handleSubmit(evt) {
       evt.preventDefault();
@@ -43,7 +43,7 @@ const mapDispatch = dispatch => {
       const email = evt.target.email.value;
       const password = evt.target.password.value;
       dispatch(auth(email, password, formName));
-    }
+    },
   };
 };
 
