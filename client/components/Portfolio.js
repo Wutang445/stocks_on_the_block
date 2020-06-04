@@ -15,7 +15,7 @@ const Portfolio = (props) => {
 
   return (
     <div>
-      <h1>Welcome. Here are the stocks listed for today.</h1>
+      <h3>Welcome. Here are the stocks listed for today.</h3>
 
       {/* <button onClick={handleClick}>Test</button> */}
     </div>

@@ -333,7 +333,7 @@ var Portfolio = function Portfolio(props) {
   react__WEBPACK_IMPORTED_MODULE_0___default.a.useEffect(function () {
     props.getStockData();
   }, [stockData]);
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Welcome. Here are the stocks listed for today."));
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Welcome. Here are the stocks listed for today."));
 };
 
 var mapState = function mapState(state) {
