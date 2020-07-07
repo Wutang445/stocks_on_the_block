@@ -463,7 +463,7 @@ var Routes = function Routes() {
   }));
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Routes);
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["withRouter"])(Routes));
 
 /***/ }),
 

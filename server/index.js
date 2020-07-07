@@ -36,7 +36,7 @@ const devApp = async () => {
       secret: process.env.SESSION_SECRET || "King Kunta",
       store: sessionStore,
       resave: false,
-      saveUninitialized: false
+      saveUninitialized: false,
     })
   );
   app.use(passport.initialize());
@@ -51,6 +51,20 @@ const devApp = async () => {
     console.error(err);
     console.error(err.stack);
     res.status(err.status || 500).send(err.message || "Internal server error.");
+  });
+
+  app.use((req, res, next) => {
+    if (path.extname(req.path).length) {
+      const err = new Error("Not found");
+      err.status = 404;
+      next(err);
+    } else {
+      next();
+    }
+  });
+
+  app.use("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "..", "public/index.html"));
   });
 
   const syncData = () => db.sync();

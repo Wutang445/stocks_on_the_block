@@ -5,13 +5,15 @@ const fetch = require("node-fetch");
 
 const iex = new IEXCloudClient(fetch, {
   sandbox: true,
-  publishable: apiKey,
+  publishable: "Tpk_cd90eaec093349e4a755d588e5f97f74",
   version: "stable",
 });
 
 router.get("/", async (req, res, next) => {
-  const stockData = await iex.batchSymbols("googl, amazn, fb").price();
-  res.send(stockData);
+  // const stockData = await iex.symbol("googl").price();
+  const stockdata = await iex.symbol("googl").financials("quarterly");
+  console.log(stockdata);
+  res.send(stockdata);
   try {
   } catch (error) {
     res.sendStatus(404);
