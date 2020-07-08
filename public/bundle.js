@@ -326,14 +326,16 @@ var Portfolio = function Portfolio(props) {
       stockData = _React$useState2[0],
       setStockData = _React$useState2[1];
 
-  console.log(props.stockData["Time Series (1min)"]); // const handleClick = () => {
-  //   props.getStockData();
-  // };
+  var handleClick = function handleClick() {
+    setStockData(props.stockData);
+  };
 
   react__WEBPACK_IMPORTED_MODULE_0___default.a.useEffect(function () {
     props.getStockData();
-  }, [stockData]);
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Welcome. Here are the stocks listed for today."));
+  }, []);
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Welcome. Here are the stocks listed for today."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    onClick: handleClick
+  }, "Test"), stockData.AAPL && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, stockData.AAPL.price));
 };
 
 var mapState = function mapState(state) {

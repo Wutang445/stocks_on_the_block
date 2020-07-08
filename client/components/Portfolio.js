@@ -4,20 +4,19 @@ import { connect } from "react-redux";
 
 const Portfolio = (props) => {
   const [stockData, setStockData] = React.useState("");
-  console.log(props.stockData["Time Series (1min)"]);
-  // const handleClick = () => {
-  //   props.getStockData();
-  // };
+
+  const handleClick = () => {
+    setStockData(props.stockData);
+  };
 
   React.useEffect(() => {
     props.getStockData();
-  }, [stockData]);
-
+  }, []);
   return (
     <div>
       <h3>Welcome. Here are the stocks listed for today.</h3>
-
-      {/* <button onClick={handleClick}>Test</button> */}
+      <button onClick={handleClick}>Test</button>
+      {stockData.AAPL && <h1>{stockData.AAPL.price}</h1>}
     </div>
   );
 };
