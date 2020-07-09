@@ -27,19 +27,14 @@ const Portfolio = (props) => {
     "XOM",
     "BAC",
   ];
-  const [stockData, setStockData] = React.useState("");
 
   React.useEffect(() => {
-    props.getStockData()
+    props.getStockData();
     const interval = setInterval(() => {
-      props.getStockData()
+      props.getStockData();
     }, 60000);
     return () => clearInterval(interval);
   }, []);
-
-  setInterval(() => {
-    setStockData(props.stockData)
-  }, 10000)
   return (
     <div>
       <h3>Welcome. Here are the stocks listed for today.</h3>
@@ -53,17 +48,17 @@ const Portfolio = (props) => {
           </tr>
         </thead>
         <tbody>
-          {stockData[symbols[0]] &&
+          {props.stockData[symbols[0]] &&
             symbols.map((symbol) => (
               <tr>
                 <td>{symbol}</td>
                 <td>{symbol}</td>
-                <td>{stockData[symbol][`intraday-prices`][0].date}</td>
-                <td>{stockData[symbol][`intraday-prices`][0].high}</td>
-                <td>{stockData[symbol][`intraday-prices`][0].low}</td>
-                <td>{stockData[symbol][`intraday-prices`][0].open}</td>
-                <td>{stockData[symbol][`intraday-prices`][0].close}</td>
-                <td>{stockData[symbol][`intraday-prices`][0].average}</td>
+                <td>{props.stockData[symbol][`intraday-prices`][0].date}</td>
+                <td>{props.stockData[symbol][`intraday-prices`][0].high}</td>
+                <td>{props.stockData[symbol][`intraday-prices`][0].low}</td>
+                <td>{props.stockData[symbol][`intraday-prices`][0].open}</td>
+                <td>{props.stockData[symbol][`intraday-prices`][0].close}</td>
+                <td>{props.stockData[symbol][`intraday-prices`][0].average}</td>
               </tr>
             ))}
         </tbody>
