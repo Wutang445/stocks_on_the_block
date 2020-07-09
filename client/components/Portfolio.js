@@ -3,6 +3,17 @@ import { getStockData } from "../store/stockData";
 import { connect } from "react-redux";
 
 const Portfolio = (props) => {
+  const tableHeaders = [
+    "Company Name",
+    "Symbol",
+    "Date",
+    "High",
+    "Low",
+    "Open",
+    "Close",
+    "Average",
+  ];
+
   const symbols = [
     "AAPL",
     "GOOGL",
@@ -18,23 +29,45 @@ const Portfolio = (props) => {
   ];
   const [stockData, setStockData] = React.useState("");
 
-  const handleClick = () => {
-    setStockData(props.stockData);
-  };
-
   React.useEffect(() => {
-    props.getStockData();
+    props.getStockData()
+    const interval = setInterval(() => {
+      props.getStockData()
+    }, 60000);
+    return () => clearInterval(interval);
   }, []);
+
+  setInterval(() => {
+    setStockData(props.stockData)
+  }, 10000)
   return (
     <div>
       <h3>Welcome. Here are the stocks listed for today.</h3>
-      <button onClick={handleClick}>Test</button>
-      {stockData[`${symbols[0]}`] &&
-        symbols.map((symbol) => (
-          <h1>
-            {symbol}: ${stockData[symbol].price}
-          </h1>
-        ))}
+
+      <table>
+        <thead>
+          <tr>
+            {tableHeaders.map((header) => (
+              <th>{header}</th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {stockData[symbols[0]] &&
+            symbols.map((symbol) => (
+              <tr>
+                <td>{symbol}</td>
+                <td>{symbol}</td>
+                <td>{stockData[symbol][`intraday-prices`][0].date}</td>
+                <td>{stockData[symbol][`intraday-prices`][0].high}</td>
+                <td>{stockData[symbol][`intraday-prices`][0].low}</td>
+                <td>{stockData[symbol][`intraday-prices`][0].open}</td>
+                <td>{stockData[symbol][`intraday-prices`][0].close}</td>
+                <td>{stockData[symbol][`intraday-prices`][0].average}</td>
+              </tr>
+            ))}
+        </tbody>
+      </table>
     </div>
   );
 };

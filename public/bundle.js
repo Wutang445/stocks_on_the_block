@@ -321,6 +321,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 var Portfolio = function Portfolio(props) {
+  var tableHeaders = ["Company Name", "Symbol", "Date", "High", "Low", "Open", "Close", "Average"];
   var symbols = ["AAPL", "GOOGL", "MSFT", "AMZN", "F", "WMT", "INTC", "CVX", "PFE", "XOM", "BAC"];
 
   var _React$useState = react__WEBPACK_IMPORTED_MODULE_0___default.a.useState(""),
@@ -328,18 +329,23 @@ var Portfolio = function Portfolio(props) {
       stockData = _React$useState2[0],
       setStockData = _React$useState2[1];
 
-  var handleClick = function handleClick() {
-    setStockData(props.stockData);
-  };
-
   react__WEBPACK_IMPORTED_MODULE_0___default.a.useEffect(function () {
     props.getStockData();
+    var interval = setInterval(function () {
+      props.getStockData();
+    }, 60000);
+    return function () {
+      return clearInterval(interval);
+    };
   }, []);
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Welcome. Here are the stocks listed for today."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    onClick: handleClick
-  }, "Test"), stockData["".concat(symbols[0])] && symbols.map(function (symbol) {
-    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, symbol, ": $", stockData[symbol].price);
-  }));
+  setInterval(function () {
+    setStockData(props.stockData);
+  }, 10000);
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Welcome. Here are the stocks listed for today."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, tableHeaders.map(function (header) {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, header);
+  }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, stockData[symbols[0]] && symbols.map(function (symbol) {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, symbol), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, symbol), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, stockData[symbol]["intraday-prices"][0].date), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, stockData[symbol]["intraday-prices"][0].high), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, stockData[symbol]["intraday-prices"][0].low), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, stockData[symbol]["intraday-prices"][0].open), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, stockData[symbol]["intraday-prices"][0].close), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, stockData[symbol]["intraday-prices"][0].average));
+  }))));
 };
 
 var mapState = function mapState(state) {
