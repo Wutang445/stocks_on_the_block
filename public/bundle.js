@@ -321,6 +321,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 var Portfolio = function Portfolio(props) {
+  var symbols = ["AAPL", "GOOGL", "MSFT", "AMZN", "F", "WMT", "INTC", "CVX", "PFE", "XOM", "BAC"];
+
   var _React$useState = react__WEBPACK_IMPORTED_MODULE_0___default.a.useState(""),
       _React$useState2 = _slicedToArray(_React$useState, 2),
       stockData = _React$useState2[0],
@@ -335,7 +337,9 @@ var Portfolio = function Portfolio(props) {
   }, []);
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Welcome. Here are the stocks listed for today."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     onClick: handleClick
-  }, "Test"), stockData.AAPL && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, stockData.AAPL.price));
+  }, "Test"), stockData["".concat(symbols[0])] && symbols.map(function (symbol) {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, symbol, ": $", stockData[symbol].price);
+  }));
 };
 
 var mapState = function mapState(state) {

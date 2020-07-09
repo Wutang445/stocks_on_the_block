@@ -10,25 +10,24 @@ const iex = new IEXCloudClient(fetch, {
 });
 
 router.get("/", async (req, res, next) => {
-  // const stockdata = await iex.market().todayEarnings();
-  const stockdata = await iex
-    .batchSymbols(
-      "AAPL",
-      "GOOGL",
-      "MSFT",
-      "AMZN",
-      "F",
-      "WMT",
-      "INTC",
-      "CVX",
-      "PFE",
-      "XOM",
-      "BAC"
-    )
-    .price();
-  // console.log(stockdata);
-  res.send(stockdata);
   try {
+    const stockdata = await iex
+      .batchSymbols(
+        "AAPL",
+        "GOOGL",
+        "MSFT",
+        "AMZN",
+        "F",
+        "WMT",
+        "INTC",
+        "CVX",
+        "PFE",
+        "XOM",
+        "BAC"
+      )
+      .intradayPrices();
+
+    res.send(stockdata);
   } catch (error) {
     res.sendStatus(404);
   }

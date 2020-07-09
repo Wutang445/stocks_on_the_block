@@ -3,6 +3,19 @@ import { getStockData } from "../store/stockData";
 import { connect } from "react-redux";
 
 const Portfolio = (props) => {
+  const symbols = [
+    "AAPL",
+    "GOOGL",
+    "MSFT",
+    "AMZN",
+    "F",
+    "WMT",
+    "INTC",
+    "CVX",
+    "PFE",
+    "XOM",
+    "BAC",
+  ];
   const [stockData, setStockData] = React.useState("");
 
   const handleClick = () => {
@@ -16,7 +29,12 @@ const Portfolio = (props) => {
     <div>
       <h3>Welcome. Here are the stocks listed for today.</h3>
       <button onClick={handleClick}>Test</button>
-      {stockData.AAPL && <h1>{stockData.AAPL.price}</h1>}
+      {stockData[`${symbols[0]}`] &&
+        symbols.map((symbol) => (
+          <h1>
+            {symbol}: ${stockData[symbol].price}
+          </h1>
+        ))}
     </div>
   );
 };
