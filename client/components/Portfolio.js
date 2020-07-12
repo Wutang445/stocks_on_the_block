@@ -1,6 +1,11 @@
 import React from "react";
+import styled, { css } from "styled-components";
 import { getStockData } from "../store/stockData";
 import { connect } from "react-redux";
+
+const StockTable = styled.table`
+  width: 100%
+`
 
 const Portfolio = (props) => {
   const tableHeaders = [
@@ -39,7 +44,7 @@ const Portfolio = (props) => {
     <div>
       <h3>Welcome. Here are the stocks listed for today.</h3>
 
-      <table>
+      <StockTable>
         <thead>
           <tr>
             {tableHeaders.map((header) => (
@@ -50,19 +55,21 @@ const Portfolio = (props) => {
         <tbody>
           {props.stockData[symbols[0]] &&
             symbols.map((symbol) => (
-              <tr>
+              <tr key={props.stockData[symbol][`intraday-prices`][0].volume}>
                 <td>{symbol}</td>
                 <td>{symbol}</td>
                 <td>{props.stockData[symbol][`intraday-prices`][0].date}</td>
-                <td>{props.stockData[symbol][`intraday-prices`][0].high}</td>
-                <td>{props.stockData[symbol][`intraday-prices`][0].low}</td>
-                <td>{props.stockData[symbol][`intraday-prices`][0].open}</td>
-                <td>{props.stockData[symbol][`intraday-prices`][0].close}</td>
-                <td>{props.stockData[symbol][`intraday-prices`][0].average}</td>
+                <td>${props.stockData[symbol][`intraday-prices`][0].high}</td>
+                <td>${props.stockData[symbol][`intraday-prices`][0].low}</td>
+                <td>${props.stockData[symbol][`intraday-prices`][0].open}</td>
+                <td>${props.stockData[symbol][`intraday-prices`][0].close}</td>
+                <td>${props.stockData[symbol][`intraday-prices`][0].average}</td>
+                <td><button>Purchase</button></td>
+                <td><button>Sell</button></td>
               </tr>
             ))}
         </tbody>
-      </table>
+      </StockTable>
     </div>
   );
 };

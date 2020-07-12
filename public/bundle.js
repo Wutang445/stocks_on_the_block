@@ -337,11 +337,26 @@ var mapDispatch = function mapDispatch(dispatch) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _store_stockData__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../store/stockData */ "./client/store/stockData.js");
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var _store_stockData__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../store/stockData */ "./client/store/stockData.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+function _templateObject() {
+  var data = _taggedTemplateLiteral(["\n  width: 100%\n"]);
+
+  _templateObject = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
 
 
+
+
+var StockTable = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].table(_templateObject());
 
 var Portfolio = function Portfolio(props) {
   var tableHeaders = ["Company Name", "Symbol", "Date", "High", "Low", "Open", "Close", "Average"];
@@ -355,10 +370,12 @@ var Portfolio = function Portfolio(props) {
       return clearInterval(interval);
     };
   }, []);
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Welcome. Here are the stocks listed for today."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, tableHeaders.map(function (header) {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Welcome. Here are the stocks listed for today."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(StockTable, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, tableHeaders.map(function (header) {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, header);
   }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, props.stockData[symbols[0]] && symbols.map(function (symbol) {
-    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, symbol), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, symbol), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, props.stockData[symbol]["intraday-prices"][0].date), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, props.stockData[symbol]["intraday-prices"][0].high), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, props.stockData[symbol]["intraday-prices"][0].low), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, props.stockData[symbol]["intraday-prices"][0].open), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, props.stockData[symbol]["intraday-prices"][0].close), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, props.stockData[symbol]["intraday-prices"][0].average));
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+      key: props.stockData[symbol]["intraday-prices"][0].volume
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, symbol), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, symbol), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, props.stockData[symbol]["intraday-prices"][0].date), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "$", props.stockData[symbol]["intraday-prices"][0].high), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "$", props.stockData[symbol]["intraday-prices"][0].low), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "$", props.stockData[symbol]["intraday-prices"][0].open), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "$", props.stockData[symbol]["intraday-prices"][0].close), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "$", props.stockData[symbol]["intraday-prices"][0].average), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "Purchase")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "Sell")));
   }))));
 };
 
@@ -371,12 +388,12 @@ var mapState = function mapState(state) {
 var mapDispatch = function mapDispatch(dispatch) {
   return {
     getStockData: function getStockData() {
-      return dispatch(Object(_store_stockData__WEBPACK_IMPORTED_MODULE_1__["getStockData"])());
+      return dispatch(Object(_store_stockData__WEBPACK_IMPORTED_MODULE_2__["getStockData"])());
     }
   };
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["connect"])(mapState, mapDispatch)(Portfolio));
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_3__["connect"])(mapState, mapDispatch)(Portfolio));
 
 /***/ }),
 
