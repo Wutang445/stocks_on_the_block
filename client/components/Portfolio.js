@@ -4,8 +4,9 @@ import { getStockData } from "../store/stockData";
 import { connect } from "react-redux";
 
 const StockTable = styled.table`
-  width: 100%
-`
+  text-align: center;
+  width: 100%;
+`;
 
 const Portfolio = (props) => {
   const tableHeaders = [
@@ -63,9 +64,15 @@ const Portfolio = (props) => {
                 <td>${props.stockData[symbol][`intraday-prices`][0].low}</td>
                 <td>${props.stockData[symbol][`intraday-prices`][0].open}</td>
                 <td>${props.stockData[symbol][`intraday-prices`][0].close}</td>
-                <td>${props.stockData[symbol][`intraday-prices`][0].average}</td>
-                <td><button>Purchase</button></td>
-                <td><button>Sell</button></td>
+                <td>
+                  ${props.stockData[symbol][`intraday-prices`][0].average}
+                </td>
+                <td>
+                  <button>Purchase</button>
+                </td>
+                <td>
+                  <button>Sell</button>
+                </td>
               </tr>
             ))}
         </tbody>

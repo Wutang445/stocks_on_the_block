@@ -123,6 +123,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
@@ -131,8 +132,22 @@ function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) ||
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
+function _templateObject() {
+  var data = _taggedTemplateLiteral(["\n  text-align: center;\n"]);
+
+  _templateObject = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
 
+
+
+var HomeDiv = styled_components__WEBPACK_IMPORTED_MODULE_2__["default"].div(_templateObject());
 
 var Home = function Home(props) {
   var _React$useState = react__WEBPACK_IMPORTED_MODULE_0___default.a.useState(5000),
@@ -140,7 +155,7 @@ var Home = function Home(props) {
       cash = _React$useState2[0],
       setCash = _React$useState2[1];
 
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, props.user.id ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Welcome back, ", props.user.email, ". You currently have $", cash, " to spend.") : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Sign up to get started"));
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, props.user.id ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Welcome back, ", props.user.email, ". You currently have $", cash, " to spend.") : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(HomeDiv, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Buy, sell and trade through a robust and intuitive trading interface, all with peace of mind."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Our simulation allows people to practice their transactions on the most popular stocks without having to sacrifice personal finances.")));
 };
 
 var mapState = function mapState(state) {
@@ -341,7 +356,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _store_stockData__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../store/stockData */ "./client/store/stockData.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n  width: 100%\n"]);
+  var data = _taggedTemplateLiteral(["\n  text-align: center;\n  width: 100%;\n"]);
 
   _templateObject = function _templateObject() {
     return data;
