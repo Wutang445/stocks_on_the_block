@@ -1,6 +1,7 @@
 import React from "react";
 import styled, { css } from "styled-components";
 import { getStockData } from "../store/stockData";
+import { getStockPrice } from "../store/stockPrice";
 import { connect } from "react-redux";
 
 const StockTable = styled.table`
@@ -18,6 +19,7 @@ const Portfolio = (props) => {
     "Open",
     "Close",
     "Average",
+    "Current Prices",
   ];
 
   const symbols = [
@@ -36,8 +38,10 @@ const Portfolio = (props) => {
 
   React.useEffect(() => {
     props.getStockData();
+    props.getStockPrice();
     const interval = setInterval(() => {
       props.getStockData();
+      props.getStockPrice();
     }, 60000);
     return () => clearInterval(interval);
   }, []);
@@ -55,26 +59,25 @@ const Portfolio = (props) => {
         </thead>
         <tbody>
           {props.stockData[symbols[0]] &&
-            symbols.map((symbol) => (
-              <tr key={props.stockData[symbol][`intraday-prices`][0].volume}>
-                <td>{symbol}</td>
-                <td>{symbol}</td>
-                <td>{props.stockData[symbol][`intraday-prices`][0].date}</td>
-                <td>${props.stockData[symbol][`intraday-prices`][0].high}</td>
-                <td>${props.stockData[symbol][`intraday-prices`][0].low}</td>
-                <td>${props.stockData[symbol][`intraday-prices`][0].open}</td>
-                <td>${props.stockData[symbol][`intraday-prices`][0].close}</td>
-                <td>
-                  ${props.stockData[symbol][`intraday-prices`][0].average}
-                </td>
-                <td>
-                  <button>Purchase</button>
-                </td>
-                <td>
-                  <button>Sell</button>
-                </td>
-              </tr>
-            ))}
+          props.stockData[symbols[0]][`intraday-prices`]
+            ? symbols.map((symbol) => (
+                <tr key={props.stockData[symbol][`intraday-prices`][0].volume}>
+                  <td>{symbol}</td>
+                  <td>{symbol}</td>
+                  <td>{props.stockData[symbol][`intraday-prices`][0].date}</td>
+                  <td>${props.stockData[symbol][`intraday-prices`][0].high}</td>
+                  <td>${props.stockData[symbol][`intraday-prices`][0].low}</td>
+                  <td>${props.stockData[symbol][`intraday-prices`][0].open}</td>
+                  <td>
+                    ${props.stockData[symbol][`intraday-prices`][0].close}
+                  </td>
+                  <td>
+                    ${props.stockData[symbol][`intraday-prices`][0].average}
+                  </td>
+                  <td>${props.stockPrice[symbol].price}</td>
+                </tr>
+              ))
+            : ""}
         </tbody>
       </StockTable>
     </div>
@@ -84,12 +87,14 @@ const Portfolio = (props) => {
 const mapState = (state) => {
   return {
     stockData: state.stockData,
+    stockPrice: state.stockPrice,
   };
 };
 
 const mapDispatch = (dispatch) => {
   return {
     getStockData: () => dispatch(getStockData()),
+    getStockPrice: () => dispatch(getStockPrice()),
   };
 };
 export default connect(mapState, mapDispatch)(Portfolio);

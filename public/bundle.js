@@ -354,7 +354,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
 /* harmony import */ var _store_stockData__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../store/stockData */ "./client/store/stockData.js");
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _store_stockPrice__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../store/stockPrice */ "./client/store/stockPrice.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 function _templateObject() {
   var data = _taggedTemplateLiteral(["\n  text-align: center;\n  width: 100%;\n"]);
 
@@ -371,15 +372,18 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
 
 
 
+
 var StockTable = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].table(_templateObject());
 
 var Portfolio = function Portfolio(props) {
-  var tableHeaders = ["Company Name", "Symbol", "Date", "High", "Low", "Open", "Close", "Average"];
+  var tableHeaders = ["Company Name", "Symbol", "Date", "High", "Low", "Open", "Close", "Average", "Current Prices"];
   var symbols = ["AAPL", "GOOGL", "MSFT", "AMZN", "F", "WMT", "INTC", "CVX", "PFE", "XOM", "BAC"];
   react__WEBPACK_IMPORTED_MODULE_0___default.a.useEffect(function () {
     props.getStockData();
+    props.getStockPrice();
     var interval = setInterval(function () {
       props.getStockData();
+      props.getStockPrice();
     }, 60000);
     return function () {
       return clearInterval(interval);
@@ -387,16 +391,17 @@ var Portfolio = function Portfolio(props) {
   }, []);
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Welcome. Here are the stocks listed for today."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(StockTable, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, tableHeaders.map(function (header) {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, header);
-  }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, props.stockData[symbols[0]] && symbols.map(function (symbol) {
+  }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, props.stockData[symbols[0]] && props.stockData[symbols[0]]["intraday-prices"] ? symbols.map(function (symbol) {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
       key: props.stockData[symbol]["intraday-prices"][0].volume
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, symbol), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, symbol), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, props.stockData[symbol]["intraday-prices"][0].date), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "$", props.stockData[symbol]["intraday-prices"][0].high), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "$", props.stockData[symbol]["intraday-prices"][0].low), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "$", props.stockData[symbol]["intraday-prices"][0].open), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "$", props.stockData[symbol]["intraday-prices"][0].close), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "$", props.stockData[symbol]["intraday-prices"][0].average), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "Purchase")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "Sell")));
-  }))));
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, symbol), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, symbol), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, props.stockData[symbol]["intraday-prices"][0].date), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "$", props.stockData[symbol]["intraday-prices"][0].high), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "$", props.stockData[symbol]["intraday-prices"][0].low), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "$", props.stockData[symbol]["intraday-prices"][0].open), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "$", props.stockData[symbol]["intraday-prices"][0].close), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "$", props.stockData[symbol]["intraday-prices"][0].average), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "$", props.stockPrice[symbol].price));
+  }) : "")));
 };
 
 var mapState = function mapState(state) {
   return {
-    stockData: state.stockData
+    stockData: state.stockData,
+    stockPrice: state.stockPrice
   };
 };
 
@@ -404,11 +409,14 @@ var mapDispatch = function mapDispatch(dispatch) {
   return {
     getStockData: function getStockData() {
       return dispatch(Object(_store_stockData__WEBPACK_IMPORTED_MODULE_2__["getStockData"])());
+    },
+    getStockPrice: function getStockPrice() {
+      return dispatch(Object(_store_stockPrice__WEBPACK_IMPORTED_MODULE_3__["getStockPrice"])());
     }
   };
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_3__["connect"])(mapState, mapDispatch)(Portfolio));
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_4__["connect"])(mapState, mapDispatch)(Portfolio));
 
 /***/ }),
 
@@ -529,7 +537,7 @@ var Routes = function Routes() {
 /*!*******************************!*\
   !*** ./client/store/index.js ***!
   \*******************************/
-/*! exports provided: default, me, auth, logout, getStockData */
+/*! exports provided: default, me, auth, logout, getStockData, getStockPrice */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -542,6 +550,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var redux_devtools_extension__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(redux_devtools_extension__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _user__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./user */ "./client/store/user.js");
 /* harmony import */ var _stockData__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./stockData */ "./client/store/stockData.js");
+/* harmony import */ var _stockPrice__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./stockPrice */ "./client/store/stockPrice.js");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "me", function() { return _user__WEBPACK_IMPORTED_MODULE_4__["me"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "auth", function() { return _user__WEBPACK_IMPORTED_MODULE_4__["auth"]; });
@@ -549,6 +558,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "logout", function() { return _user__WEBPACK_IMPORTED_MODULE_4__["logout"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "getStockData", function() { return _stockData__WEBPACK_IMPORTED_MODULE_5__["getStockData"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "getStockPrice", function() { return _stockPrice__WEBPACK_IMPORTED_MODULE_6__["getStockPrice"]; });
+
 
 
 
@@ -558,13 +570,15 @@ __webpack_require__.r(__webpack_exports__);
 
 var reducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
   user: _user__WEBPACK_IMPORTED_MODULE_4__["default"],
-  stockData: _stockData__WEBPACK_IMPORTED_MODULE_5__["default"]
+  stockData: _stockData__WEBPACK_IMPORTED_MODULE_5__["default"],
+  stockPrice: _stockPrice__WEBPACK_IMPORTED_MODULE_6__["default"]
 });
 var middleware = Object(redux_devtools_extension__WEBPACK_IMPORTED_MODULE_3__["composeWithDevTools"])(Object(redux__WEBPACK_IMPORTED_MODULE_0__["applyMiddleware"])(redux_thunk__WEBPACK_IMPORTED_MODULE_2__["default"], Object(redux_logger__WEBPACK_IMPORTED_MODULE_1__["createLogger"])({
   collapsed: true
 })));
 var store = Object(redux__WEBPACK_IMPORTED_MODULE_0__["createStore"])(reducer, middleware);
 /* harmony default export */ __webpack_exports__["default"] = (store);
+
 
 
 
@@ -646,6 +660,90 @@ var getStockData = function getStockData() {
   switch (action.type) {
     case GET_STOCK_DATA:
       return action.stockData;
+
+    default:
+      return state;
+  }
+});
+
+/***/ }),
+
+/***/ "./client/store/stockPrice.js":
+/*!************************************!*\
+  !*** ./client/store/stockPrice.js ***!
+  \************************************/
+/*! exports provided: getStockPrice, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getStockPrice", function() { return getStockPrice; });
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+
+var GET_STOCK_PRICE = "GET_STOCK_PRICE";
+
+var gotStockPrice = function gotStockPrice(stockPrice) {
+  return {
+    type: GET_STOCK_PRICE,
+    stockPrice: stockPrice
+  };
+}; // Thunk creator
+
+
+var getStockPrice = function getStockPrice() {
+  return (
+    /*#__PURE__*/
+    function () {
+      var _ref = _asyncToGenerator(
+      /*#__PURE__*/
+      regeneratorRuntime.mark(function _callee(dispatch) {
+        var res;
+        return regeneratorRuntime.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.prev = 0;
+                _context.next = 3;
+                return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/stockData/price");
+
+              case 3:
+                res = _context.sent;
+                dispatch(gotStockPrice(res.data));
+                _context.next = 10;
+                break;
+
+              case 7:
+                _context.prev = 7;
+                _context.t0 = _context["catch"](0);
+                console.error(_context.t0);
+
+              case 10:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, null, [[0, 7]]);
+      }));
+
+      return function (_x) {
+        return _ref.apply(this, arguments);
+      };
+    }()
+  );
+}; // Reducer
+
+/* harmony default export */ __webpack_exports__["default"] = (function () {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+
+  switch (action.type) {
+    case GET_STOCK_PRICE:
+      return action.stockPrice;
 
     default:
       return state;
