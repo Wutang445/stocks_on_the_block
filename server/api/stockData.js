@@ -33,4 +33,28 @@ router.get("/", async (req, res, next) => {
   }
 });
 
+router.get("/price", async (req, res, next) => {
+  try {
+    const stockprice = await iex
+      .batchSymbols(
+        "AAPL",
+        "GOOGL",
+        "MSFT",
+        "AMZN",
+        "F",
+        "WMT",
+        "INTC",
+        "CVX",
+        "PFE",
+        "XOM",
+        "BAC"
+      )
+      .price();
+
+    res.send(stockprice);
+  } catch (error) {
+    res.sendStatus(404);
+  }
+});
+
 module.exports = router;
