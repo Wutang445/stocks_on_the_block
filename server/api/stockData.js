@@ -20,7 +20,7 @@ router.get("/", async (req, res, next) => {
         "F",
         "WMT",
         "INTC",
-        "CVX",
+        "NVDA",
         "PFE",
         "XOM",
         "BAC"
@@ -44,7 +44,7 @@ router.get("/price", async (req, res, next) => {
         "F",
         "WMT",
         "INTC",
-        "CVX",
+        "NVDA",
         "PFE",
         "XOM",
         "BAC"

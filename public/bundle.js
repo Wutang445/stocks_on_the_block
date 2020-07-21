@@ -356,8 +356,28 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _store_stockData__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../store/stockData */ "./client/store/stockData.js");
 /* harmony import */ var _store_stockPrice__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../store/stockPrice */ "./client/store/stockPrice.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+function _templateObject3() {
+  var data = _taggedTemplateLiteral(["\n  font-size: 30px;\n  color: #39ff14;\n  font-family: \"Roboto\", sans-serif;\n"]);
+
+  _templateObject3 = function _templateObject3() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject2() {
+  var data = _taggedTemplateLiteral(["\n  font-size: 30px;\n  color: #39ff14;\n"]);
+
+  _templateObject2 = function _templateObject2() {
+    return data;
+  };
+
+  return data;
+}
+
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n  text-align: center;\n  width: 100%;\n"]);
+  var data = _taggedTemplateLiteral(["\n  text-align: center;\n  width: 100%;\n  background: black;\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -374,10 +394,25 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
 
 
 var StockTable = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].table(_templateObject());
+var StockHeaders = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].th(_templateObject2());
+var StockCell = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].td(_templateObject3());
 
 var Portfolio = function Portfolio(props) {
   var tableHeaders = ["Company Name", "Symbol", "Date", "High", "Low", "Open", "Close", "Average", "Current Prices"];
-  var symbols = ["AAPL", "GOOGL", "MSFT", "AMZN", "F", "WMT", "INTC", "CVX", "PFE", "XOM", "BAC"];
+  var companyName = {
+    AAPL: "Apple Inc.",
+    GOOGL: "Alphabet Inc.",
+    MSFT: "Microsoft Corporation",
+    AMZN: "Amazon.com, Inc.",
+    F: "Ford Motor Company",
+    WMT: "Walmart Inc.",
+    INTC: "Intel Corporation",
+    NVDA: "Nvidia Corporation",
+    PFE: "Pfizer Inc.",
+    XOM: "Exxon Mobile Corporation",
+    BAC: "Bank of America Corp"
+  };
+  var symbols = ["AAPL", "GOOGL", "MSFT", "AMZN", "F", "WMT", "INTC", "NVDA", "PFE", "XOM", "BAC"];
   react__WEBPACK_IMPORTED_MODULE_0___default.a.useEffect(function () {
     props.getStockData();
     props.getStockPrice();
@@ -390,11 +425,11 @@ var Portfolio = function Portfolio(props) {
     };
   }, []);
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Welcome. Here are the stocks listed for today."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(StockTable, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, tableHeaders.map(function (header) {
-    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, header);
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(StockHeaders, null, header);
   }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, props.stockData[symbols[0]] && props.stockData[symbols[0]]["intraday-prices"] ? symbols.map(function (symbol) {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
       key: props.stockData[symbol]["intraday-prices"][0].volume
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, symbol), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, symbol), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, props.stockData[symbol]["intraday-prices"][0].date), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "$", props.stockData[symbol]["intraday-prices"][0].high), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "$", props.stockData[symbol]["intraday-prices"][0].low), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "$", props.stockData[symbol]["intraday-prices"][0].open), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "$", props.stockData[symbol]["intraday-prices"][0].close), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "$", props.stockData[symbol]["intraday-prices"][0].average), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "$", props.stockPrice[symbol].price));
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(StockCell, null, companyName[symbol]), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(StockCell, null, symbol), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(StockCell, null, props.stockData[symbol]["intraday-prices"][0].date), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(StockCell, null, "$", props.stockData[symbol]["intraday-prices"][0].high), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(StockCell, null, "$", props.stockData[symbol]["intraday-prices"][0].low), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(StockCell, null, "$", props.stockData[symbol]["intraday-prices"][0].open), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(StockCell, null, "$", props.stockData[symbol]["intraday-prices"][0].close), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(StockCell, null, "$", props.stockData[symbol]["intraday-prices"][0].average), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(StockCell, null, "$", props.stockPrice[symbol].price));
   }) : "")));
 };
 

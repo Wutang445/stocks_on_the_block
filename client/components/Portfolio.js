@@ -7,6 +7,18 @@ import { connect } from "react-redux";
 const StockTable = styled.table`
   text-align: center;
   width: 100%;
+  background: black;
+`;
+
+const StockHeaders = styled.th`
+  font-size: 30px;
+  color: #39ff14;
+`;
+
+const StockCell = styled.td`
+  font-size: 30px;
+  color: #39ff14;
+  font-family: "Roboto", sans-serif;
 `;
 
 const Portfolio = (props) => {
@@ -22,6 +34,20 @@ const Portfolio = (props) => {
     "Current Prices",
   ];
 
+  const companyName = {
+    AAPL: "Apple Inc.",
+    GOOGL: "Alphabet Inc.",
+    MSFT: "Microsoft Corporation",
+    AMZN: "Amazon.com, Inc.",
+    F: "Ford Motor Company",
+    WMT: "Walmart Inc.",
+    INTC: "Intel Corporation",
+    NVDA: "Nvidia Corporation",
+    PFE: "Pfizer Inc.",
+    XOM: "Exxon Mobile Corporation",
+    BAC: "Bank of America Corp",
+  };
+
   const symbols = [
     "AAPL",
     "GOOGL",
@@ -30,7 +56,7 @@ const Portfolio = (props) => {
     "F",
     "WMT",
     "INTC",
-    "CVX",
+    "NVDA",
     "PFE",
     "XOM",
     "BAC",
@@ -53,7 +79,7 @@ const Portfolio = (props) => {
         <thead>
           <tr>
             {tableHeaders.map((header) => (
-              <th>{header}</th>
+              <StockHeaders>{header}</StockHeaders>
             ))}
           </tr>
         </thead>
@@ -62,19 +88,27 @@ const Portfolio = (props) => {
           props.stockData[symbols[0]][`intraday-prices`]
             ? symbols.map((symbol) => (
                 <tr key={props.stockData[symbol][`intraday-prices`][0].volume}>
-                  <td>{symbol}</td>
-                  <td>{symbol}</td>
-                  <td>{props.stockData[symbol][`intraday-prices`][0].date}</td>
-                  <td>${props.stockData[symbol][`intraday-prices`][0].high}</td>
-                  <td>${props.stockData[symbol][`intraday-prices`][0].low}</td>
-                  <td>${props.stockData[symbol][`intraday-prices`][0].open}</td>
-                  <td>
+                  <StockCell>{companyName[symbol]}</StockCell>
+                  <StockCell>{symbol}</StockCell>
+                  <StockCell>
+                    {props.stockData[symbol][`intraday-prices`][0].date}
+                  </StockCell>
+                  <StockCell>
+                    ${props.stockData[symbol][`intraday-prices`][0].high}
+                  </StockCell>
+                  <StockCell>
+                    ${props.stockData[symbol][`intraday-prices`][0].low}
+                  </StockCell>
+                  <StockCell>
+                    ${props.stockData[symbol][`intraday-prices`][0].open}
+                  </StockCell>
+                  <StockCell>
                     ${props.stockData[symbol][`intraday-prices`][0].close}
-                  </td>
-                  <td>
+                  </StockCell>
+                  <StockCell>
                     ${props.stockData[symbol][`intraday-prices`][0].average}
-                  </td>
-                  <td>${props.stockPrice[symbol].price}</td>
+                  </StockCell>
+                  <StockCell>${props.stockPrice[symbol].price}</StockCell>
                 </tr>
               ))
             : ""}
