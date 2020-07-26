@@ -11,3 +11,5 @@ const StockPurchase = db.define("stockPurchase", {
     allowNull: false,
   },
 });
+
+module.exports = StockPurchase;

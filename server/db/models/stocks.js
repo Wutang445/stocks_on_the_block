@@ -7,3 +7,5 @@ const Stocks = db.define("stock", {
     allowNull: false,
   },
 });
+
+module.exports = Stocks;

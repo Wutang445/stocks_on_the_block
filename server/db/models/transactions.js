@@ -10,3 +10,5 @@ const Transactions = db.define("transaction", {
     type: Sequelize.INTEGER,
   },
 });
+
+module.exports = Transactions;
