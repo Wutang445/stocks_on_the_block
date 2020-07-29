@@ -9,4 +9,4 @@ Transaction.belongsTo(User);
 Transaction.belongsToMany(Stock, { through: StockPurchase });
 Stock.belongsToMany(Transaction, { through: StockPurchase });
 
-module.exports = { User, Transaction, Stock };
+module.exports = { User, Transaction, Stock, StockPurchase };
