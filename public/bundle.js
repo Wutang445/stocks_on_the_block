@@ -296,7 +296,7 @@ var Navbar = function Navbar(props) {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(NavContainer, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Stocks on the Block"), isLoggedIn ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(NavLinks, {
     as: react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"],
     to: "/home"
-  }, "Home"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+  }, "Home"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(NavLinks, {
     href: "#",
     onClick: props.handleClick
   }, "Logout"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(NavLinks, {
@@ -305,7 +305,10 @@ var Navbar = function Navbar(props) {
   }, "Portfolio"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(NavLinks, {
     as: react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"],
     to: "/transactions"
-  }, "Transactions")) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(NavLinks, {
+  }, "Transactions"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(NavLinks, {
+    as: react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"],
+    to: "/useraccount"
+  }, "My Account")) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(NavLinks, {
     as: react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"],
     to: "/home"
   }, "Home"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(NavLinks, {
@@ -314,7 +317,7 @@ var Navbar = function Navbar(props) {
   }, "Login"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(NavLinks, {
     as: react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"],
     to: "/signup"
-  }, "SignUp"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(NavLinks, {
+  }, "Sign Up"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(NavLinks, {
     as: react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"],
     to: "/portfolio"
   }, "Portfolio"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(NavLinks, {
@@ -455,11 +458,32 @@ var mapDispatch = function mapDispatch(dispatch) {
 
 /***/ }),
 
+/***/ "./client/components/UserAccount.js":
+/*!******************************************!*\
+  !*** ./client/components/UserAccount.js ***!
+  \******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var UserAccount = function UserAccount(props) {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Welcome User"));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (UserAccount);
+
+/***/ }),
+
 /***/ "./client/components/index.js":
 /*!************************************!*\
   !*** ./client/components/index.js ***!
   \************************************/
-/*! exports provided: Login, Signup, Home, Portfolio */
+/*! exports provided: Login, Signup, Home, Portfolio, UserAccount */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -475,7 +499,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Portfolio__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Portfolio */ "./client/components/Portfolio.js");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Portfolio", function() { return _Portfolio__WEBPACK_IMPORTED_MODULE_2__["default"]; });
 
+/* harmony import */ var _UserAccount__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./UserAccount */ "./client/components/UserAccount.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "UserAccount", function() { return _UserAccount__WEBPACK_IMPORTED_MODULE_3__["default"]; });
+
 // Centralized exports for components
+
 
 
 
@@ -543,28 +571,41 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var _components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components */ "./client/components/index.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components */ "./client/components/index.js");
 
 
 
 
-var Routes = function Routes() {
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+
+var Routes = function Routes(props) {
+  var isLoggedIn = props.isLoggedIn;
+  console.log(isLoggedIn);
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Switch"], null, isLoggedIn ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+    path: "/useraccount",
+    component: _components__WEBPACK_IMPORTED_MODULE_3__["UserAccount"]
+  }) : "", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     path: "/login",
-    component: _components__WEBPACK_IMPORTED_MODULE_2__["Login"]
+    component: _components__WEBPACK_IMPORTED_MODULE_3__["Login"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     path: "/signup",
-    component: _components__WEBPACK_IMPORTED_MODULE_2__["Signup"]
+    component: _components__WEBPACK_IMPORTED_MODULE_3__["Signup"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     path: "/portfolio",
-    component: _components__WEBPACK_IMPORTED_MODULE_2__["Portfolio"]
+    component: _components__WEBPACK_IMPORTED_MODULE_3__["Portfolio"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     path: "/home",
-    component: _components__WEBPACK_IMPORTED_MODULE_2__["Home"]
+    component: _components__WEBPACK_IMPORTED_MODULE_3__["Home"]
   }));
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["withRouter"])(Routes));
+var mapState = function mapState(state) {
+  return {
+    isLoggedIn: !!state.user.id
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["connect"])(mapState, null)(Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["withRouter"])(Routes)));
 
 /***/ }),
 

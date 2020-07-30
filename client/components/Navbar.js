@@ -38,15 +38,18 @@ const Navbar = (props) => {
             Home
           </NavLinks>
 
-          <a href="#" onClick={props.handleClick}>
+          <NavLinks href="#" onClick={props.handleClick}>
             Logout
-          </a>
+          </NavLinks>
 
           <NavLinks as={Link} to="/portfolio">
             Portfolio
           </NavLinks>
           <NavLinks as={Link} to="/transactions">
             Transactions
+          </NavLinks>
+          <NavLinks as={Link} to="/useraccount">
+            My Account
           </NavLinks>
         </nav>
       ) : (
@@ -58,7 +61,7 @@ const Navbar = (props) => {
             Login
           </NavLinks>
           <NavLinks as={Link} to="/signup">
-            SignUp
+            Sign Up
           </NavLinks>
           <NavLinks as={Link} to="/portfolio">
             Portfolio

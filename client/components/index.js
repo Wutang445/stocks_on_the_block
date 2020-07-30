@@ -2,3 +2,4 @@
 export { Login, Signup } from "./LoginSignUp";
 export { default as Home } from "./Home";
 export { default as Portfolio } from "./Portfolio";
+export { default as UserAccount } from "./UserAccount";
