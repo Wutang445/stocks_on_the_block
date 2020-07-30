@@ -155,7 +155,7 @@ var Home = function Home(props) {
       cash = _React$useState2[0],
       setCash = _React$useState2[1];
 
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, props.user.id ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Welcome back, ", props.user.email, ". You currently have $", cash, " to spend.") : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(HomeDiv, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Buy, sell and trade through a robust and intuitive trading interface, all with peace of mind."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Our simulation allows people to practice their transactions on the most popular stocks without having to sacrifice personal finances.")));
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(HomeDiv, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Buy, sell and trade through a robust and intuitive trading interface, all with peace of mind."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Our simulation allows people to practice their transactions on the most popular stocks without having to sacrifice personal finances."), props.user.id ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Welcome back, ", props.user.email, ". You currently have $", cash, " to spend.") : ""));
 };
 
 var mapState = function mapState(state) {
@@ -469,13 +469,22 @@ var mapDispatch = function mapDispatch(dispatch) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+
 
 
 var UserAccount = function UserAccount(props) {
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Welcome User"));
+  var User = props.user;
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Welcome ", User.email), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "You currently have $", User.funds, " in your account"));
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (UserAccount);
+var mapState = function mapState(state) {
+  return {
+    user: state.user
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapState, null)(UserAccount));
 
 /***/ }),
 

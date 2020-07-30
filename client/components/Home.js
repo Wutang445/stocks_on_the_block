@@ -10,23 +10,26 @@ const Home = (props) => {
   const [cash, setCash] = React.useState(5000);
   return (
     <div>
-      {props.user.id ? (
+      <HomeDiv>
         <h1>
-          Welcome back, {props.user.email}. You currently have ${cash} to spend.
+          Buy, sell and trade through a robust and intuitive trading interface,
+          all with peace of mind.
         </h1>
-      ) : (
-        <HomeDiv>
+        <p>
+          Our simulation allows people to practice their transactions on the
+          most popular stocks without having to sacrifice personal finances.
+        </p>
+        {/* <h1>Sign up to get started</h1> */}
+
+        {props.user.id ? (
           <h1>
-            Buy, sell and trade through a robust and intuitive trading
-            interface, all with peace of mind.
+            Welcome back, {props.user.email}. You currently have ${cash} to
+            spend.
           </h1>
-          <p>
-            Our simulation allows people to practice their transactions on the
-            most popular stocks without having to sacrifice personal finances.
-          </p>
-          {/* <h1>Sign up to get started</h1> */}
-        </HomeDiv>
-      )}
+        ) : (
+          ""
+        )}
+      </HomeDiv>
     </div>
   );
 };
