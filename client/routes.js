@@ -2,7 +2,7 @@ import React from "react";
 import { withRouter, Route, Switch } from "react-router-dom";
 import { connect } from "react-redux";
 
-import { Login, Signup, Home, Portfolio, UserAccount } from "./components";
+import { Login, Signup, Home, Market, UserAccount } from "./components";
 
 const Routes = (props) => {
   const { isLoggedIn } = props;
@@ -12,7 +12,7 @@ const Routes = (props) => {
       {isLoggedIn ? <Route path="/useraccount" component={UserAccount} /> : ""}
       <Route path="/login" component={Login} />
       <Route path="/signup" component={Signup} />
-      <Route path="/portfolio" component={Portfolio} />
+      <Route path="/market" component={Market} />
       <Route path="/home" component={Home} />
     </Switch>
   );

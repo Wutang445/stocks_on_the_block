@@ -42,8 +42,8 @@ const Navbar = (props) => {
             Logout
           </NavLinks>
 
-          <NavLinks as={Link} to="/portfolio">
-            Portfolio
+          <NavLinks as={Link} to="/market">
+            Market
           </NavLinks>
           <NavLinks as={Link} to="/transactions">
             Transactions
@@ -63,8 +63,8 @@ const Navbar = (props) => {
           <NavLinks as={Link} to="/signup">
             Sign Up
           </NavLinks>
-          <NavLinks as={Link} to="/portfolio">
-            Portfolio
+          <NavLinks as={Link} to="/market">
+            Market
           </NavLinks>
           <NavLinks as={Link} to="/transactions">
             Transactions
