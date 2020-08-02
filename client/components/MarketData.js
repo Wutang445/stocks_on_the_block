@@ -1,5 +1,4 @@
 import React from "react";
-import styled, { css } from "styled-components";
 import { getStockData } from "../store/stockData";
 import { getStockPrice } from "../store/stockPrice";
 import { connect } from "react-redux";
@@ -9,47 +8,49 @@ import {
   StockCell,
 } from "./styledcomponents/StockTable";
 
+// Hard Coded Data for now
+const tableHeaders = [
+  "Company Name",
+  "Symbol",
+  "Date",
+  "High",
+  "Low",
+  "Open",
+  "Close",
+  "Average",
+  "Current Prices",
+];
+
+const companyName = {
+  AAPL: "Apple Inc.",
+  GOOGL: "Alphabet Inc.",
+  MSFT: "Microsoft Corporation",
+  AMZN: "Amazon.com, Inc.",
+  F: "Ford Motor Company",
+  WMT: "Walmart Inc.",
+  INTC: "Intel Corporation",
+  NVDA: "Nvidia Corporation",
+  PFE: "Pfizer Inc.",
+  XOM: "Exxon Mobile Corporation",
+  BAC: "Bank of America Corp",
+};
+
+const symbols = [
+  "AAPL",
+  "GOOGL",
+  "MSFT",
+  "AMZN",
+  "F",
+  "WMT",
+  "INTC",
+  "NVDA",
+  "PFE",
+  "XOM",
+  "BAC",
+];
+
+// Component
 const MarketData = (props) => {
-  const tableHeaders = [
-    "Company Name",
-    "Symbol",
-    "Date",
-    "High",
-    "Low",
-    "Open",
-    "Close",
-    "Average",
-    "Current Prices",
-  ];
-
-  const companyName = {
-    AAPL: "Apple Inc.",
-    GOOGL: "Alphabet Inc.",
-    MSFT: "Microsoft Corporation",
-    AMZN: "Amazon.com, Inc.",
-    F: "Ford Motor Company",
-    WMT: "Walmart Inc.",
-    INTC: "Intel Corporation",
-    NVDA: "Nvidia Corporation",
-    PFE: "Pfizer Inc.",
-    XOM: "Exxon Mobile Corporation",
-    BAC: "Bank of America Corp",
-  };
-
-  const symbols = [
-    "AAPL",
-    "GOOGL",
-    "MSFT",
-    "AMZN",
-    "F",
-    "WMT",
-    "INTC",
-    "NVDA",
-    "PFE",
-    "XOM",
-    "BAC",
-  ];
-
   React.useEffect(() => {
     props.getStockData();
     props.getStockPrice();
@@ -59,6 +60,7 @@ const MarketData = (props) => {
     }, 60000);
     return () => clearInterval(interval);
   }, []);
+
   return (
     <div>
       <div>
