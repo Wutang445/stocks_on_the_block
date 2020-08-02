@@ -254,42 +254,44 @@ var Signup = Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapSign
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _MarketData__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./MarketData */ "./client/components/MarketData.js");
+
+
+
+
+var Market = function Market(props) {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Welcome. Here are the stocks listed for today."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_MarketData__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, props.user.id ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, props.user.email, "'s Portfolio Overview"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Company Name"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Symbol"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Quantity"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Current Price"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Actions"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "Stock Name"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "Stock Symbol"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "# of stocks owned"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "Price"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "Purchase"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "Sell")))))) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "You are currently only able to view stock metrics for the day. For further functionality involving buying and selling, please sign up or log in with an existing account")));
+};
+
+var mapState = function mapState(state) {
+  return {
+    stockData: state.stockData,
+    stockPrice: state.stockPrice,
+    user: state.user
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mapState, null)(Market));
+
+/***/ }),
+
+/***/ "./client/components/MarketData.js":
+/*!*****************************************!*\
+  !*** ./client/components/MarketData.js ***!
+  \*****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
 /* harmony import */ var _store_stockData__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../store/stockData */ "./client/store/stockData.js");
 /* harmony import */ var _store_stockPrice__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../store/stockPrice */ "./client/store/stockPrice.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _store_user__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../store/user */ "./client/store/user.js");
-function _templateObject3() {
-  var data = _taggedTemplateLiteral(["\n  font-size: 30px;\n  color: #39ff14;\n  font-family: \"Roboto\", sans-serif;\n"]);
-
-  _templateObject3 = function _templateObject3() {
-    return data;
-  };
-
-  return data;
-}
-
-function _templateObject2() {
-  var data = _taggedTemplateLiteral(["\n  font-size: 30px;\n  color: #39ff14;\n"]);
-
-  _templateObject2 = function _templateObject2() {
-    return data;
-  };
-
-  return data;
-}
-
-function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n  text-align: center;\n  width: 100%;\n  background: black;\n"]);
-
-  _templateObject = function _templateObject() {
-    return data;
-  };
-
-  return data;
-}
-
-function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+/* harmony import */ var _styledcomponents_StockTable__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./styledcomponents/StockTable */ "./client/components/styledcomponents/StockTable.js");
 
 
 
@@ -297,11 +299,7 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
 
 
 
-var StockTable = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].table(_templateObject());
-var StockHeaders = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].th(_templateObject2());
-var StockCell = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].td(_templateObject3());
-
-var Market = function Market(props) {
+var MarketData = function MarketData(props) {
   var tableHeaders = ["Company Name", "Symbol", "Date", "High", "Low", "Open", "Close", "Average", "Current Prices"];
   var companyName = {
     AAPL: "Apple Inc.",
@@ -328,13 +326,13 @@ var Market = function Market(props) {
       return clearInterval(interval);
     };
   }, []);
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Welcome. Here are the stocks listed for today."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(StockTable, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, tableHeaders.map(function (header) {
-    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(StockHeaders, null, header);
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_styledcomponents_StockTable__WEBPACK_IMPORTED_MODULE_5__["StockTable"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, tableHeaders.map(function (header) {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_styledcomponents_StockTable__WEBPACK_IMPORTED_MODULE_5__["StockHeaders"], null, header);
   }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, props.stockData[symbols[0]] && props.stockData[symbols[0]]["intraday-prices"] ? symbols.map(function (symbol) {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
       key: props.stockData[symbol]["intraday-prices"][0].volume
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(StockCell, null, companyName[symbol]), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(StockCell, null, symbol), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(StockCell, null, props.stockData[symbol]["intraday-prices"][0].date), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(StockCell, null, "$", props.stockData[symbol]["intraday-prices"][0].high), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(StockCell, null, "$", props.stockData[symbol]["intraday-prices"][0].low), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(StockCell, null, "$", props.stockData[symbol]["intraday-prices"][0].open), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(StockCell, null, "$", props.stockData[symbol]["intraday-prices"][0].close), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(StockCell, null, "$", props.stockData[symbol]["intraday-prices"][0].average), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(StockCell, null, "$", props.stockPrice[symbol].price));
-  }) : ""))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, props.user.id ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, props.user.email, "'s Portfolio Overview"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Company Name"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Symbol"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Quantity"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Current Price"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Actions"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "Stock Name"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "Stock Symbol"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "# of stocks owned"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "Price"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "Purchase"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "Sell")))))) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "You are currently only able to view stock metrics for the day. For further functionality involving buying and selling, please sign up or log in with an existing account")));
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_styledcomponents_StockTable__WEBPACK_IMPORTED_MODULE_5__["StockCell"], null, companyName[symbol]), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_styledcomponents_StockTable__WEBPACK_IMPORTED_MODULE_5__["StockCell"], null, symbol), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_styledcomponents_StockTable__WEBPACK_IMPORTED_MODULE_5__["StockCell"], null, props.stockData[symbol]["intraday-prices"][0].date), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_styledcomponents_StockTable__WEBPACK_IMPORTED_MODULE_5__["StockCell"], null, "$", props.stockData[symbol]["intraday-prices"][0].high), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_styledcomponents_StockTable__WEBPACK_IMPORTED_MODULE_5__["StockCell"], null, "$", props.stockData[symbol]["intraday-prices"][0].low), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_styledcomponents_StockTable__WEBPACK_IMPORTED_MODULE_5__["StockCell"], null, "$", props.stockData[symbol]["intraday-prices"][0].open), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_styledcomponents_StockTable__WEBPACK_IMPORTED_MODULE_5__["StockCell"], null, "$", props.stockData[symbol]["intraday-prices"][0].close), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_styledcomponents_StockTable__WEBPACK_IMPORTED_MODULE_5__["StockCell"], null, "$", props.stockData[symbol]["intraday-prices"][0].average), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_styledcomponents_StockTable__WEBPACK_IMPORTED_MODULE_5__["StockCell"], null, "$", props.stockPrice[symbol].price));
+  }) : ""))));
 };
 
 var mapState = function mapState(state) {
@@ -356,7 +354,7 @@ var mapDispatch = function mapDispatch(dispatch) {
   };
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_4__["connect"])(mapState, mapDispatch)(Market));
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_4__["connect"])(mapState, mapDispatch)(MarketData));
 
 /***/ }),
 
@@ -519,6 +517,58 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+/***/ }),
+
+/***/ "./client/components/styledcomponents/StockTable.js":
+/*!**********************************************************!*\
+  !*** ./client/components/styledcomponents/StockTable.js ***!
+  \**********************************************************/
+/*! exports provided: StockTable, StockHeaders, StockCell */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "StockTable", function() { return StockTable; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "StockHeaders", function() { return StockHeaders; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "StockCell", function() { return StockCell; });
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+function _templateObject3() {
+  var data = _taggedTemplateLiteral(["\n  font-size: 30px;\n  color: #39ff14;\n  font-family: \"Roboto\", sans-serif;\n"]);
+
+  _templateObject3 = function _templateObject3() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject2() {
+  var data = _taggedTemplateLiteral(["\n  font-size: 30px;\n  color: #39ff14;\n"]);
+
+  _templateObject2 = function _templateObject2() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject() {
+  var data = _taggedTemplateLiteral(["\n  text-align: center;\n  width: 100%;\n  background: black;\n"]);
+
+  _templateObject = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+
+var StockTable = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].table(_templateObject());
+var StockHeaders = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].th(_templateObject2());
+var StockCell = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].td(_templateObject3());
 
 /***/ }),
 
