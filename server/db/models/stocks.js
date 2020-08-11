@@ -6,6 +6,9 @@ const Stocks = db.define("stock", {
     type: Sequelize.STRING,
     allowNull: false,
   },
+  price: {
+    type: Sequelize.INTEGER,
+  },
 });
 
 module.exports = Stocks;

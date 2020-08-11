@@ -2,6 +2,20 @@ const router = require("express").Router();
 const { IEXCloudClient } = require("node-iex-cloud");
 const apiKey = process.env.API_KEY;
 const fetch = require("node-fetch");
+const Stock = require("../db/index");
+const symbols = [
+  "AAPL",
+  "GOOGL",
+  "MSFT",
+  "AMZN",
+  "F",
+  "WMT",
+  "INTC",
+  "NVDA",
+  "PFE",
+  "XOM",
+  "BAC",
+];
 
 const iex = new IEXCloudClient(fetch, {
   sandbox: true,
@@ -50,6 +64,8 @@ router.get("/price", async (req, res, next) => {
         "BAC"
       )
       .price();
+
+    await Promise.all(symbols.map((symbol) => {}));
 
     res.send(stockprice);
   } catch (error) {
