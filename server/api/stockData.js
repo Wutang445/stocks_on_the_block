@@ -65,8 +65,6 @@ router.get("/price", async (req, res, next) => {
       )
       .price();
 
-    // console.log(Stock);
-
     symbols.forEach(async (symbol) => {
       await Stock.update(
         { price: stockprice[symbol].price },
@@ -78,9 +76,6 @@ router.get("/price", async (req, res, next) => {
       );
     });
 
-    // const prices = await Stock.findAll({
-    //   attributes: ["name", "price"],
-    // });
     res.send(stockprice);
   } catch (error) {
     res.sendStatus(404);
