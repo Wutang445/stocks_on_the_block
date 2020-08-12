@@ -2,7 +2,7 @@ const router = require("express").Router();
 const { IEXCloudClient } = require("node-iex-cloud");
 const apiKey = process.env.API_KEY;
 const fetch = require("node-fetch");
-const Stock = require("../db/index");
+const { Stock } = require("../db/models");
 const symbols = [
   "AAPL",
   "GOOGL",
@@ -65,8 +65,22 @@ router.get("/price", async (req, res, next) => {
       )
       .price();
 
-    await Promise.all(symbols.map((symbol) => {}));
+    // console.log(Stock);
 
+    symbols.forEach(async (symbol) => {
+      await Stock.update(
+        { price: stockprice[symbol].price },
+        {
+          where: {
+            name: symbol,
+          },
+        }
+      );
+    });
+
+    // const prices = await Stock.findAll({
+    //   attributes: ["name", "price"],
+    // });
     res.send(stockprice);
   } catch (error) {
     res.sendStatus(404);

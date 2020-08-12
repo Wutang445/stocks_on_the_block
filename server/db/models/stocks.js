@@ -7,7 +7,7 @@ const Stocks = db.define("stock", {
     allowNull: false,
   },
   price: {
-    type: Sequelize.INTEGER,
+    type: Sequelize.FLOAT,
   },
 });
 
