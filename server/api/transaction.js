@@ -1,6 +1,8 @@
 const router = require("express").Router();
 const { Order, Transaction, Stock } = require("../db/models");
 
+module.exports = router;
+
 router.get("/", async (req, res, next) => {
   try {
     const userTransactionId = await Transaction.findOne({
@@ -20,7 +22,7 @@ router.get("/", async (req, res, next) => {
 router.get("/:userId", async (req, res, next) => {
   try {
     const userTransaction = await Transaction.findOne({
-      include: [{ model: Stock }, { attributes: ["id"] }],
+      include: [{ model: Stock }],
       where: {
         userId: req.params.userId,
         isTransaction: true,

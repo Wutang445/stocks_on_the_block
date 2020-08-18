@@ -3,6 +3,9 @@ const { IEXCloudClient } = require("node-iex-cloud");
 const apiKey = process.env.API_KEY;
 const fetch = require("node-fetch");
 const { Stock } = require("../db/models");
+
+module.exports = router;
+
 const symbols = [
   "AAPL",
   "GOOGL",
@@ -81,5 +84,3 @@ router.get("/price", async (req, res, next) => {
     res.sendStatus(404);
   }
 });
-
-module.exports = router;

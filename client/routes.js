@@ -1,12 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { withRouter, Route, Switch } from "react-router-dom";
 import { connect } from "react-redux";
 
 import { Login, Signup, Home, Market, UserAccount } from "./components";
+import { me } from "./store";
 
 const Routes = (props) => {
   const { isLoggedIn } = props;
-  console.log(isLoggedIn);
+
+  useEffect(() => {
+    props.loadInitialData();
+  }, []);
+
   return (
     <Switch>
       {isLoggedIn ? <Route path="/useraccount" component={UserAccount} /> : ""}
@@ -24,4 +29,12 @@ const mapState = (state) => {
   };
 };
 
-export default connect(mapState, null)(withRouter(Routes));
+const mapDispatch = (dispatch) => {
+  return {
+    loadInitialData() {
+      dispatch(me());
+    },
+  };
+};
+
+export default connect(mapState, mapDispatch)(withRouter(Routes));
