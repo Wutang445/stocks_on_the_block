@@ -1,16 +1,16 @@
 const User = require("./users");
-const Transaction = require("./transactions");
+const Transactions = require("./transactions");
 const Stock = require("./stocks");
 const StockPurchase = require("./stockPurchase");
 const UserPortfolio = require("./userPortfolio");
 
-User.hasMany(Transaction);
-Transaction.belongsTo(User);
+User.hasMany(Transactions);
+Transactions.belongsTo(User);
 
-Transaction.belongsToMany(Stock, { through: StockPurchase });
-Stock.belongsToMany(Transaction, { through: StockPurchase });
+Transactions.belongsToMany(Stock, { through: StockPurchase });
+Stock.belongsToMany(Transactions, { through: StockPurchase });
 
-User.belongsToMany(Stock, { through: UserPortfolio });
-Stock.belongsToMany(User, { through: UserPortfolio });
+User.belongsToMany(Stock, { through: StockPurchase });
+Stock.belongsToMany(User, { through: StockPurchase });
 
-module.exports = { User, Transaction, Stock, StockPurchase, UserPortfolio };
+module.exports = { User, Transactions, Stock, StockPurchase, UserPortfolio };
